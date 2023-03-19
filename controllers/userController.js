@@ -1,4 +1,3 @@
-const { findById } = require("../models/destination");
 const Booking=require("../models/slotbooking");
 
 const show=async (req,res) =>{
@@ -8,16 +7,17 @@ const show=async (req,res) =>{
 
 const bookingGet =async (req,res) =>{
     const id =req.params.id
+    console.log(id);
     try{
         const bookings= Booking.find({
-            belongsto:belongsto
-
+            "belongsto":id
         });
 
-        res.render("user/booking",{title:"Booked Tickets",bookings:bookings});
+        console.log(bookings)
+        res.render("user/bookings",{title:"Booked Tickets",bookings:bookings});
     }catch(err)
     {
-
+        console.log(err);
     }
 }
 
